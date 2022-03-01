@@ -14,26 +14,55 @@ This repository is original from https://github.com/jetsonhacks/rootOnNVMe.
 
 This is taken from the NVIDIA Jetson AGX Xavier forum https://forums.developer.nvidia.com/t/how-to-boot-from-nvme-ssd/65147/22, written by user crazy_yorik (https://forums.developer.nvidia.com/u/crazy_yorick). Thank you crazy_yorik!
 
-Go to the storage interface you want to use, for example nvme
+Go to the storage interface you want to use. 
+***
+## NVMe SSD
 
 ```
-$> cd nvme
+cd nvme
 ```
 
-Next, copy the rootfs of the eMMC to the nvme SSD
+Next, copy the rootfs of the eMMC to the nvme SSD.
 ```
-$ sudo ./copy-rootfs-nvme.sh
+sudo ./copy-rootfs-nvme.sh
 ```
 
 Then, setup the service. This will copy the .service file to the correct location, and install a startup script to set the rootfs to the SSD.
 
 ```
-$ sudo ./setup-service.sh
+sudo ./setup-service.sh
 ```
 
 After setting up the service, reboot for the changes to take effect.
 
+***
+## SDMMC
 
+```
+cd sdmmc
+```
+
+First, initial the SDMMC.
+```
+sudo ./init-sdmmc.sh
+```
+After initialization, you need **remount the SDMMC**.
+
+Next, copy the rootfs of the eMMC to the SDMMC.
+```
+sudo ./copy-rootfs-sdmmc.sh
+```
+
+
+Then, setup the service. This will copy the .service file to the correct location, and install a startup script to set the rootfs to the SD card.
+
+```
+sudo ./setup-service.sh
+```
+
+After setting up the service, reboot for the changes to take effect.
+
+***
 ### Boot Notes
 These script changes the rootfs to the SSD after the kernel image is loaded from the eMMC/SD card.
 

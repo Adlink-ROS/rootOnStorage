@@ -42,13 +42,8 @@ After setting up the service, reboot for the changes to take effect.
 cd sdmmc
 ```
 
-First, initial the SDMMC.
-```
-sudo ./init-sdmmc.sh
-```
-After initialization, you need **remount the SDMMC**.
+First, initial the SDMMC, and copy the rootfs of the eMMC to the SDMMC.
 
-Next, copy the rootfs of the eMMC to the SDMMC.
 ```
 sudo ./copy-rootfs-sdmmc.sh
 ```

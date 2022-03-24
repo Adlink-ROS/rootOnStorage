@@ -18,18 +18,19 @@ Go to the storage interface you want to use.
 ***
 ## NVMe SSD
 
-```
+```bash
 cd nvme
 ```
 
 Next, copy the rootfs of the eMMC to the nvme SSD.
-```
+
+```bash
 sudo ./copy-rootfs-nvme.sh
 ```
 
 Then, setup the service. This will copy the .service file to the correct location, and install a startup script to set the rootfs to the SSD.
 
-```
+```bash
 sudo ./setup-service.sh
 ```
 
@@ -38,20 +39,20 @@ After setting up the service, reboot for the changes to take effect.
 ***
 ## SDMMC
 
-```
+```bash
 cd sdmmc
 ```
 
 First, initial the SDMMC, and copy the rootfs of the eMMC to the SDMMC.
 
-```
+```bash
 sudo ./copy-rootfs-sdmmc.sh
 ```
 
 
 Then, setup the service. This will copy the .service file to the correct location, and install a startup script to set the rootfs to the SD card.
 
-```
+```bash
 sudo ./setup-service.sh
 ```
 

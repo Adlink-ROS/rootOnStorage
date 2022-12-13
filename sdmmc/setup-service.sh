@@ -5,6 +5,11 @@ sudo cp data/setsdmmcroot.sh /sbin
 sudo chmod 777 /sbin/setsdmmcroot.sh
 systemctl daemon-reload
 sudo systemctl enable setsdmmcroot.service
+if [ "$?" != "0" ]
+then
+    echo "Failed to enable service"
+    exit 1
+fi
 
 # Copy these over to the SDMMC
 sudo cp /etc/systemd/system/setsdmmcroot.service /mnt/etc/systemd/system/setsdmmcroot.service

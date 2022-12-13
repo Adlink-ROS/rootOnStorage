@@ -5,6 +5,11 @@ sudo cp data/setnvmeroot.sh /sbin
 sudo chmod 777 /sbin/setnvmeroot.sh
 systemctl daemon-reload
 sudo systemctl enable setnvmeroot.service
+if [ "$?" != "0" ]
+then
+    echo "Failed to enable service"
+    exit 1
+fi
 
 # Copy these over to the nvme SSD
 sudo cp /etc/systemd/system/setnvmeroot.service /mnt/etc/systemd/system/setnvmeroot.service
